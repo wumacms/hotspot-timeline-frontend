@@ -608,6 +608,7 @@ onMounted(() => {
 .line-clamp-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -615,6 +616,7 @@ onMounted(() => {
 .line-clamp-3 {
     display: -webkit-box;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -628,5 +630,6 @@ input[type="number"]::-webkit-inner-spin-button {
 
 input[type="number"] {
     -moz-appearance: textfield;
+    appearance: textfield;
 }
 </style>
