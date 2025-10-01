@@ -46,7 +46,7 @@
                             class="w-full max-w-md h-64 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center">
                             <div class="text-white text-center">
                                 <div
-                                    class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    class="w-16 h-16 bg-gray-300 bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
                                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -113,7 +113,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div class="text-center">
                         <div class="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-4 flex items-center justify-center">
-                            <span class="text-gray-500 text-xl font-semibold">张明</span>
+                            <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?w=200" alt="张明"
+                                class="w-full h-full rounded-full object-cover">
                         </div>
                         <h3 class="text-lg font-semibold text-gray-900 mb-1">张明</h3>
                         <p class="text-gray-500 text-sm mb-2">产品负责人</p>
@@ -124,7 +125,8 @@
 
                     <div class="text-center">
                         <div class="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-4 flex items-center justify-center">
-                            <span class="text-gray-500 text-xl font-semibold">李华</span>
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200" alt="李华"
+                                class="w-full h-full rounded-full object-cover">
                         </div>
                         <h3 class="text-lg font-semibold text-gray-900 mb-1">李华</h3>
                         <p class="text-gray-500 text-sm mb-2">内容总监</p>
@@ -135,7 +137,8 @@
 
                     <div class="text-center">
                         <div class="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-4 flex items-center justify-center">
-                            <span class="text-gray-500 text-xl font-semibold">王芳</span>
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200" alt="王芳"
+                                class="w-full h-full rounded-full object-cover">
                         </div>
                         <h3 class="text-lg font-semibold text-gray-900 mb-1">王芳</h3>
                         <p class="text-gray-500 text-sm mb-2">技术主管</p>
@@ -146,7 +149,8 @@
 
                     <div class="text-center">
                         <div class="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-4 flex items-center justify-center">
-                            <span class="text-gray-500 text-xl font-semibold">赵强</span>
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200" alt="赵强"
+                                class="w-full h-full rounded-full object-cover">
                         </div>
                         <h3 class="text-lg font-semibold text-gray-900 mb-1">赵强</h3>
                         <p class="text-gray-500 text-sm mb-2">数据分析师</p>
@@ -168,7 +172,7 @@
                     </div>
                     <div class="bg-white rounded-xl p-6 text-center border border-gray-200">
                         <div class="text-3xl font-bold text-primary-500 mb-2">{{ stats.timelineNodes.toLocaleString()
-                            }}+</div>
+                        }}+</div>
                         <p class="text-gray-600">时间节点</p>
                     </div>
                     <div class="bg-white rounded-xl p-6 text-center border border-gray-200">

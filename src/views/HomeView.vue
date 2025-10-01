@@ -15,7 +15,7 @@
               class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
               探索所有事件
             </button>
-            <button
+            <button @click="$router.push('/about')"
               class="border border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
               了解平台
             </button>

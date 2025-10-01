@@ -14,7 +14,6 @@
             <!-- 事件详情 -->
             <div v-else-if="event" class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
                 <!-- 封面图片 -->
-                <!-- 封面图片部分修改为 -->
                 <div class="h-64 md:h-80 bg-gray-200 relative">
                     <img :src="event.coverImage" :alt="event.title" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -212,7 +211,8 @@
                 <h2 class="text-2xl font-bold text-gray-900 mb-6">相关事件</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div v-for="relatedEvent in relatedEvents" :key="relatedEvent.id"
-                        class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                        class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow cursor-pointer"
+                        @click="viewEventDetail(relatedEvent.id)">
                         <div class="h-40 bg-gray-200 relative">
                             <img :src="relatedEvent.coverImage" :alt="relatedEvent.title"
                                 class="w-full h-full object-cover">
@@ -228,8 +228,8 @@
                                 <span>{{ relatedEvent.timelineCount }} 个节点</span>
                                 <span>{{ formatDate(relatedEvent.updatedAt) }}</span>
                             </div>
-                            <button @click="viewEventDetail(relatedEvent.id)"
-                                class="w-full mt-3 bg-gray-100 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-200 transition-colors font-medium text-sm">
+                            <button @click.stop="viewEventDetail(relatedEvent.id)"
+                                class="w-full mt-3 bg-gray-100 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-200 transition-colors font-medium text-sm cursor-pointer">
                                 查看详情
                             </button>
                         </div>
@@ -317,6 +317,138 @@ const mockEvents = {
         createdAt: '2023-12-01',
         isBookmarked: false,
         popularity: 95
+    },
+    2: {
+        id: 2,
+        title: '全球气候变化谈判关键节点',
+        description: '从京都议定书到巴黎协定，梳理全球气候治理的重要里程碑事件',
+        category: '国际',
+        coverImage: 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=800',
+        timelineCount: 32,
+        updatedAt: '2024-01-12',
+        createdAt: '2023-11-20',
+        isBookmarked: true,
+        popularity: 87
+    },
+    3: {
+        id: 3,
+        title: '新冠疫情全球大流行时间线',
+        description: '记录新冠疫情从发现到全球传播，再到疫苗接种的关键时间节点',
+        category: '社会',
+        coverImage: 'https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=800',
+        timelineCount: 67,
+        updatedAt: '2024-01-10',
+        createdAt: '2023-10-15',
+        isBookmarked: false,
+        popularity: 92
+    },
+    4: {
+        id: 4,
+        title: '数字货币发展与监管历程',
+        description: '从比特币诞生到全球各国对数字货币的监管政策演变',
+        category: '经济',
+        coverImage: 'https://images.unsplash.com/photo-1622630998477-20aa696ecb05?w=800',
+        timelineCount: 28,
+        updatedAt: '2024-01-08',
+        createdAt: '2023-11-05',
+        isBookmarked: false,
+        popularity: 78
+    },
+    5: {
+        id: 5,
+        title: '奥运会历史与重要时刻',
+        description: '回顾现代奥运会从1896年至今的精彩瞬间和历史性时刻',
+        category: '体育',
+        coverImage: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800',
+        timelineCount: 54,
+        updatedAt: '2024-01-05',
+        createdAt: '2023-09-30',
+        isBookmarked: true,
+        popularity: 85
+    },
+    6: {
+        id: 6,
+        title: '电影技术发展里程碑',
+        description: '从无声电影到数字特效，探索电影制作技术的重大突破',
+        category: '娱乐',
+        coverImage: 'https://images.unsplash.com/photo-1695331453422-4388acbc0608?w=800',
+        timelineCount: 36,
+        updatedAt: '2024-01-03',
+        createdAt: '2023-10-20',
+        isBookmarked: false,
+        popularity: 72
+    },
+    7: {
+        id: 7,
+        title: '美国大选历史关键节点',
+        description: '梳理美国总统选举制度演变和历次重要选举的关键时刻',
+        category: '政治',
+        coverImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800',
+        timelineCount: 41,
+        updatedAt: '2024-01-01',
+        createdAt: '2023-11-15',
+        isBookmarked: false,
+        popularity: 88
+    },
+    8: {
+        id: 8,
+        title: '太空探索重大突破时间线',
+        description: '从第一颗人造卫星到火星探测，记录人类太空探索的重要成就',
+        category: '科技',
+        coverImage: 'https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=800',
+        timelineCount: 39,
+        updatedAt: '2023-12-28',
+        createdAt: '2023-10-10',
+        isBookmarked: true,
+        popularity: 91
+    },
+    9: {
+        id: 9,
+        title: '全球贸易体系演变',
+        description: '从GATT到WTO，分析全球多边贸易体系的发展历程',
+        category: '经济',
+        coverImage: 'https://images.unsplash.com/photo-1605792657660-596af9009e82?w=800',
+        timelineCount: 31,
+        updatedAt: '2023-12-25',
+        createdAt: '2023-09-25',
+        isBookmarked: false,
+        popularity: 76
+    },
+    10: {
+        id: 10,
+        title: '互联网发展简史',
+        description: '从ARPANET到5G时代，追溯互联网技术和应用的演进过程',
+        category: '科技',
+        coverImage: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800',
+        timelineCount: 48,
+        updatedAt: '2023-12-20',
+        createdAt: '2023-08-15',
+        isBookmarked: false,
+        popularity: 94
+    },
+    11: {
+        id: 11,
+        title: '女性权利运动里程碑',
+        description: '记录全球女性争取平等权利的重要历史时刻和成就',
+        category: '社会',
+        coverImage: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800',
+        timelineCount: 29,
+        updatedAt: '2023-12-18',
+        createdAt: '2023-10-05',
+        isBookmarked: true,
+        popularity: 83
+    },
+    12: {
+        id: 12,
+        title: '世界杯足球赛历史',
+        description: '回顾历届世界杯的精彩比赛、传奇球员和重要规则变化',
+        category: '体育',
+        coverImage: 'https://images.unsplash.com/photo-1572139332398-724fbaaa46a0?w=800',
+        timelineCount: 23,
+        updatedAt: '2023-12-15',
+        createdAt: '2023-09-20',
+        isBookmarked: false,
+        popularity: 79
     }
 }
 
@@ -383,6 +515,233 @@ const mockTimelineItems = {
                 { title: '官方发布', url: 'https://openai.com/blog/chatgpt' }
             ]
         }
+    ],
+    2: [
+        {
+            id: 1,
+            title: '联合国气候变化框架公约',
+            description: '联合国通过《联合国气候变化框架公约》，为全球应对气候变化奠定法律基础',
+            date: '1992-05-09',
+            images: [
+                'https://images.unsplash.com/photo-1633095975779-fd354aa0dc95?w=400'
+            ],
+            links: [
+                { title: '公约文本', url: 'https://unfccc.int' }
+            ]
+        },
+        {
+            id: 2,
+            title: '京都议定书签署',
+            description: '《京都议定书》在日本京都通过，首次为发达国家设定具有法律约束力的减排目标',
+            date: '1997-12-11',
+            images: [
+                'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400'
+            ],
+            links: [
+                { title: '议定书详情', url: 'https://unfccc.int/kyoto_protocol' }
+            ]
+        },
+        {
+            id: 3,
+            title: '巴黎协定达成',
+            description: '近200个国家在巴黎达成历史性气候协议，目标将全球变暖控制在2°C以内',
+            date: '2015-12-12',
+            images: [
+                'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400'
+            ],
+            links: [
+                { title: '协定内容', url: 'https://unfccc.int/process-and-meetings/the-paris-agreement' }
+            ]
+        }
+    ],
+    3: [
+        {
+            id: 1,
+            title: '首例病例报告',
+            description: '中国武汉报告首例不明原因肺炎病例，后确认为新型冠状病毒感染',
+            date: '2019-12-01',
+            images: [
+                'https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=400'
+            ],
+            links: [
+                { title: 'WHO报告', url: 'https://www.who.int' }
+            ]
+        },
+        {
+            id: 2,
+            title: '世卫组织宣布全球大流行',
+            description: '世界卫生组织宣布新冠疫情构成全球大流行',
+            date: '2020-03-11',
+            images: [
+                'https://images.unsplash.com/photo-1583324113626-70df0f4deaab?w=400'
+            ],
+            links: [
+                { title: 'WHO声明', url: 'https://www.who.int' }
+            ]
+        },
+        {
+            id: 3,
+            title: '首批疫苗获批',
+            description: '多国批准紧急使用首批新冠疫苗，开启全球疫苗接种工作',
+            date: '2020-12-11',
+            images: [
+                'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400'
+            ],
+            links: [
+                { title: '疫苗信息', url: 'https://www.who.int' }
+            ]
+        }
+    ],
+    4: [
+        {
+            id: 1,
+            title: '比特币白皮书发布',
+            description: '中本聪发布《比特币：一种点对点的电子现金系统》白皮书',
+            date: '2008-10-31',
+            images: [
+                'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=400'
+            ],
+            links: [
+                { title: '白皮书原文', url: 'https://bitcoin.org/bitcoin.pdf' }
+            ]
+        },
+        {
+            id: 2,
+            title: '首个比特币交易',
+            description: '程序员用1万比特币购买两个披萨，完成首次实物交易',
+            date: '2010-05-22',
+            images: [
+                'https://images.unsplash.com/photo-1609554496796-c345a5335ceb?w=400'
+            ],
+            links: [
+                { title: '交易详情', url: 'https://en.bitcoin.it/wiki/Pizza' }
+            ]
+        },
+        {
+            id: 3,
+            title: '中国禁止ICO',
+            description: '中国人民银行等七部委发布公告，全面禁止ICO融资活动',
+            date: '2017-09-04',
+            images: [
+                'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400'
+            ],
+            links: [
+                { title: '监管公告', url: 'http://www.pbc.gov.cn' }
+            ]
+        }
+    ],
+    // 其他事件的时间线数据可以类似添加...
+    5: [
+        {
+            id: 1,
+            title: '第一届现代奥运会',
+            description: '第一届现代奥林匹克运动会在希腊雅典举行',
+            date: '1896-04-06',
+            images: [
+                'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=400'
+            ],
+            links: [
+                { title: '奥运会历史', url: 'https://olympics.com' }
+            ]
+        },
+    ],
+    6: [
+        {
+            id: 1,
+            title: '第一部有声电影',
+            description: '《爵士歌手》上映，标志着有声电影时代的开始',
+            date: '1927-10-06',
+            images: [
+                'https://images.unsplash.com/photo-1489599809505-f2d4cac3555f?w=400'
+            ],
+            links: [
+                { title: '电影历史', url: 'https://example.com' }
+            ]
+        }
+    ],
+    7: [
+        {
+            id: 1,
+            title: '第一次总统选举',
+            description: '乔治·华盛顿当选美国第一任总统',
+            date: '1789-02-04',
+            images: [
+                'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400'
+            ],
+            links: [
+                { title: '选举历史', url: 'https://example.com' }
+            ]
+        }
+    ],
+    8: [
+        {
+            id: 1,
+            title: '第一颗人造卫星',
+            description: '苏联发射斯普特尼克1号，人类进入太空时代',
+            date: '1957-10-04',
+            images: [
+                'https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=400'
+            ],
+            links: [
+                { title: '太空探索史', url: 'https://example.com' }
+            ]
+        }
+    ],
+    9: [
+        {
+            id: 1,
+            title: 'GATT签署',
+            description: '23个国家签署关税及贸易总协定(GATT)',
+            date: '1947-10-30',
+            images: [
+                'https://images.unsplash.com/photo-1605792657660-596af9009e82?w=400'
+            ],
+            links: [
+                { title: '贸易历史', url: 'https://example.com' }
+            ]
+        }
+    ],
+    10: [
+        {
+            id: 1,
+            title: 'ARPANET建立',
+            description: '美国国防部建立ARPANET，互联网的前身',
+            date: '1969-10-29',
+            images: [
+                'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400'
+            ],
+            links: [
+                { title: '互联网历史', url: 'https://example.com' }
+            ]
+        }
+    ],
+    11: [
+        {
+            id: 1,
+            title: '妇女选举权',
+            description: '新西兰成为第一个给予妇女选举权的国家',
+            date: '1893-09-19',
+            images: [
+                'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400'
+            ],
+            links: [
+                { title: '女权运动', url: 'https://example.com' }
+            ]
+        }
+    ],
+    12: [
+        {
+            id: 1,
+            title: '第一届世界杯',
+            description: '第一届国际足联世界杯在乌拉圭举行',
+            date: '1930-07-13',
+            images: [
+                'https://images.unsplash.com/photo-1572139332398-724fbaaa46a0?w=400'
+            ],
+            links: [
+                { title: '世界杯历史', url: 'https://fifa.com' }
+            ]
+        }
     ]
 }
 
@@ -419,6 +778,10 @@ const mockRelatedEvents = [
 // 方法
 const loadEventData = async (eventId) => {
     loading.value = true
+
+    // 立即滚动到页面顶部
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+
     try {
         // 模拟API调用延迟
         await new Promise(resolve => setTimeout(resolve, 1000))
