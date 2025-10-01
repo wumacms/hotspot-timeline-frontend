@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+/* 自定义样式可以写在这里 */
+.timeline-item:hover {
+    transform: translateY(-2px);
+    transition: all 0.2s ease-in-out;
+}
